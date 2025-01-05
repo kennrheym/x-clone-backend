@@ -17,6 +17,9 @@ import os
 
 load_dotenv()
 
+print("testting 123")
+print(os.getenv("TEST_VARIABLE"))
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -31,6 +34,20 @@ SECRET_KEY = 'django-insecure-zo1y0at8t7rqa&5o)8-33nm8h46(w^v62q08h^h-sp^*8usp&k
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": {
+        "rest_framework_simplejwt.authentication.JWTAuthentication"
+    },
+    "DEFAULT_PERMISSION_CLASSES": {
+        "rest_framework.permissions.IsAuthenticated"
+    }
+}
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1)
+}
 
 
 # Application definition
